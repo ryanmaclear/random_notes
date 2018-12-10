@@ -1,0 +1,60 @@
+1. After install arduino IDE.
+
+2. Follow:
+
+
+https://diyprojects.io/programming-esp32-board-arduino-ide-macos-windows-linux-arm-raspberrypi-orangepi/
+
+Essentially:
+
+mkdir -p ~/Arduino/hardware/espressif && \
+cd ~/Arduino/hardware/espressif && \
+git clone https://github.com/espressif/arduino-esp32.git esp32 && \
+cd esp32/tools/ && \
+python get.py
+
+
+This enables esp32 in arduino, but the xtensa compile is missing.
+
+3. Install the xtensa cross platform compiler:
+
+Read kolban-ESP32-1.pdf on leanpub, page 1194
+
+Follow the build instructions - about 2 hours to complete (pi gets hot too, so make sure there''s ventilation).
+
+all a link in
+
+/home/pi/Arduino/hardware/espressif/esp32/tools to
+
+as
+
+/home/pi/Arduino/hardware/espressif/esp32/tools
+
+So: 
+
+ ln -s /home/pi/crosstool-NG/builds/xtensa-esp32-elf/ xtensa-esp32-elf
+
+
+
+This should fix things in arduino.
+
+
+For Wemos OLED, after ESP32 above is installed:
+
+ https://github.com/FablabTorino/AUG-Torino/wiki/Wemos-Lolin-board-(ESP32-with-128x64-SSD1306-I2C-OLED-display)
+
+
+or
+
+
+https://diyprojects.io/unpacking-wemos-esp32-lolin-clone-0-96-ssd1306-monochrome-oled-display/The xtensa 
+
+
+For both, make sure that:
+
+Find the line SSD1306 display (0x3c, D3, D5) and replace D3 for 5 and D5 by 4
+ 
+
+
+Note, the Adrafruit OLED one doesn't work - it needs some changes, but not sure where yet.
+

@@ -1,0 +1,22 @@
+Get Firmware for ESP32 from:
+
+http://micropython.org/download
+
+Erase flash:
+
+~/Arduino/hardware/espressif/esp32/tools/esptool.py --port /dev/ttyUSB0 erase_flash
+
+Flash Firware:
+
+~/Arduino/hardware/espressif/esp32/tools/esptool.py --port /dev/ttyUSB0 --baud 460800 write_flash --flash_size=detect 0x1000 esp32-20181210-v1.9.4-740-gdc23978dd.bin
+
+Test:
+
+rshell --buffer-size=30 -p /dev/ttyUSB0
+
+
+As well as the section "First micropython script" here:
+
+https://diyprojects.io/unpacking-wemos-esp32-lolin32-lite-testing-firmware-micropython-raspberry-pi-3/#First_MicroPython_script
+
+
